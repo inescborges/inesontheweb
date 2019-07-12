@@ -114,6 +114,7 @@ body, html {
 
 .intro .description {
     width: 100%;
+    background-image: url("images/cloud.svg");
     max-width: calc(100% - 334px);
     color: white;
     display: flex;
