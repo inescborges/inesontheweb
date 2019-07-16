@@ -20,6 +20,7 @@
 
 body, html {
     overflow-x: hidden;
+    font-family: MuliRegular;
 }
 
 .intro-container {
@@ -35,14 +36,15 @@ body, html {
     color: white;
 }
 
-
-
 .intro-content {
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    height: calc( 100% - 60px );
+    height: 100%;
+    padding-top: 5px;
     color: #FFFFFF;
+}
+
+.cont {
+  width: 100%;
 }
 
 .name-part-one .dot {
@@ -102,8 +104,8 @@ body, html {
 .description p {
     font-family: MuliRegular;
     font-size: 15px;
-    margin-top: 5%;
     line-height: 1.5;
+    margin-top: 5%;
     opacity: .7;
     white-space: pre-line;
 }
@@ -151,7 +153,6 @@ body, html {
     writing-mode: vertical-rl;
     text-orientation: upright;
     margin: 0;
-
 }
 
 
@@ -163,10 +164,114 @@ body, html {
 .my-image {
   position: relative;
   height: 100%;
+  max-height: 350px;
   padding: 0;
   background: url(../assets/img/ines.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+/* .favorites-content {
+  letter-spacing: .1em;
+} */
+
+.favorites-content h2 {
+  padding: 12px;
+  padding-left: 44px;
+  background: #000;
+  color: #ffffff;
+  margin: 0;
+}
+
+.list {
+  height: 100%;
+  max-height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-container > div:first-child {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.img-container:hover .img-overlay {
+  opacity: .85;
+}
+
+.img-overlay {
+  /* position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  opacity: 0;
+  transition: .3s ease;
+  /* background: #000;
+  color: #ffffff; */
+  font-weight: bold;
+}
+
+.title-overlay {
+  color: black;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  text-align: center;
+}
+
+.selected-ambient-works {
+  background: url(../assets/img/selected-ambient-works.jpg);
+}
+
+.halcyon-digest {
+  background: url(../assets/img/halcyon-digest.jpeg);
+}
+
+.amnesiac {
+  background: url(../assets/img/amnesiac.jpg);
+}
+
+.lord-of-the-rings {
+  background: url(../assets/img/lord-of-the-rings.jpg);
+}
+
+.fight-club {
+  background: url(../assets/img/fight-club.jpg);
+}
+
+.dumbo {
+  background: url(../assets/img/dumbo.jpg);
+}
+
+.justine {
+  background: url(../assets/img/justine.jpg);
+}
+
+.metamorphosis {
+  background: url(../assets/img/metamorphosis.jpg);
+}
+
+.brave-new-world {
+  background: url(../assets/img/brave-new-world.jpg);
 }
 
 .intro-content .cont:before {
@@ -175,7 +280,7 @@ body, html {
      top: 0;
      left: 0;
      width: 100%;
-     max-width: calc(100% - 130px);
+     max-width: calc(70% - 30px);
      height: 100%;
     background: url('../assets/img/noise.png');
 
@@ -270,7 +375,8 @@ body, html {
 
 .menu-title {
     display: block;
-    padding: 12px 8px 12px;
+    height: 100%;
+    padding: 12px;
     background: #000;
     text-align: center;
     color: #ffffff;
