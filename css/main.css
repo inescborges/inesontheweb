@@ -74,6 +74,34 @@ body, html {
     font-size: 3.5rem;
     font-family: Bahnschrift;
     font-weight: bold;
+    opacity: 0;
+    animation: name-fadein-right .7s 1s linear forwards;
+}
+
+@keyframes name-fadein-up {
+  0% {
+    opacity: 0.25;
+    -webkit-transform: translate(0, 200%);
+    transform: translate(0, 200%);
+}
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+}
+
+@keyframes name-fadein-right {
+  0% {
+    opacity: 0.25;
+    -webkit-transform: translate(0, -200%);
+    transform: translate(0, -200%);
+}
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
 }
 
 .name-part-two {
@@ -83,7 +111,9 @@ body, html {
     margin-top: 10px;
     writing-mode: vertical-rl;
     text-orientation: upright;
-    color: white
+    color: white;
+    opacity: 0;
+    animation: name-fadein-up .7s 1s linear forwards;
 }
 
 .intro {
@@ -108,6 +138,13 @@ body, html {
     margin-top: 5%;
     opacity: .7;
     white-space: pre-line;
+    animation: desc-fadein .7s 2s linear;
+    animation-fill-mode: both;
+}
+
+@keyframes desc-fadein {
+  from {opacity:0;}
+  to {opacity:.7;}
 }
 
 .description p span {
@@ -149,12 +186,6 @@ body, html {
     white-space: nowrap;
 }
 
-.menu-title {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    margin: 0;
-}
-
 
 /*.my-img {
     z-index:999999;
@@ -169,6 +200,20 @@ body, html {
   background: url(../assets/img/ines.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+  animation: image-fadein .7s 1s both;
+}
+
+@keyframes image-fadein {
+  0% {
+      opacity: 0;
+      -webkit-transform: translate(0, 200%);
+      transform: translate(0, 200%);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+  }
 }
 
 /* .favorites-content {
@@ -279,14 +324,20 @@ body, html {
      position: absolute;
      top: 0;
      left: 0;
-     width: 100%;
+     width: 0;
      max-width: calc(70% - 30px);
      height: 100%;
     background: url('../assets/img/noise.png');
+    animation-name: noise;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    pointer-events: none;
+    -webkit-transition: 1.5s; /* For Safari 3.1 to 6.0 */
+    transition: 1.5s;
+ }
 
-     animation: 1s infinite noise;
-
-     pointer-events: none;
+ .intro-content .cont.animation:before {
+   width: 100%;
  }
 
 @keyframes noise {
@@ -381,11 +432,34 @@ body, html {
     text-align: center;
     color: #ffffff;
     font-weight: bold;
+    writing-mode: vertical-rl;
+    letter-spacing: .4em;
+    text-orientation: upright;
+    margin: 0;
     text-transform: uppercase;
-    transition: 0.2s ease-in-out all;
+    z-index: 2;
 }
 
-.menu-title:hover { background: #fff; color: #000; transition: 0.2s ease-in-out all; }
+.menu-title-hide {
+  writing-mode: vertical-rl;
+  text-orientation: inherit;
+  letter-spacing: .8em;
+}
+
+
+.list-title {
+  cursor: pointer;
+  transition: 1s;
+  z-index: 3;
+}
+
+.list-title-hide {
+  transform: rotate(-90deg) translate(40%,40%);
+  z-index: 3;
+  transition: 1s;
+}
+
+/* .menu-title:hover { background: #fff; color: #000; transition: 0.2s ease-in-out all; } */
 
 .flex-row {
   display: -webkit-box;
