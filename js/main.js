@@ -7,20 +7,24 @@
 
 $(document).ready(function() {
   $(".cont").addClass("animation");
+  $(".img-container").addClass("img-hide");
   // $(".list-title").addClass("list-title-hide");
-  $("img-container").hide();
-  $(".albums").find(".img-container").hide();
   // function showList() {
   //   $(".list-title").removeClass("list-title-hide");
   // }
   $(".list-title").click(function(){
-  if ($(this).closest(".albums").length>0) {
+  if ($(this).closest(".list").length>0) {
+    $(this).closest(".list").toggleClass("list-show");
     $(this).toggleClass("list-title-hide");
-    $(this).find(".menu-title").toggleClass("menu-title-show");
-    $(".albums").find(".img-container").delay(1000).toggle();
-  }
-  if ($("img-container").closest(".albums").length>0) {
-    $(this).delay(1000).show();
+    $(this).find(".menu-title").toggleClass("menu-title-hide");
+    // $(this).siblings(".img-container").toggleClass("img-show");
+    if ($(this).siblings('.img-container').hasClass("img-hide")) {
+      $(this).siblings(".img-container").addClass("img-show");
+      $(this).siblings(".img-container").removeClass("img-hide");
+    } else {
+      $(this).siblings('.img-container').addClass("img-hide");
+      $(this).siblings(".img-container").removeClass("img-show");
+    }
   }
 });
 });

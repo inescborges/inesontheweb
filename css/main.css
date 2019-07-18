@@ -19,7 +19,6 @@
 }
 
 body, html {
-    overflow-x: hidden;
     font-family: MuliRegular;
 }
 
@@ -230,14 +229,21 @@ body, html {
 
 .list {
   height: 100%;
-  max-height: 300px;
+  max-height: 190px;
   display: flex;
   align-items: center;
+  transition: 1s;
+}
+
+.list-show {
+  max-height: 300px;
+  transition: 1s;
 }
 
 .img-container {
   display: flex;
   flex-direction: column;
+  opacity: 0;
 }
 
 .img-container > div:first-child {
@@ -254,6 +260,28 @@ body, html {
 .img-container:hover .img-overlay {
   opacity: .85;
 }
+
+.img-show {
+  opacity: 1;
+  transition: .5s;
+  transition-delay: 1.5s;
+}
+
+.img-hide {
+  opacity: 0;
+  transition: .5s;
+  transition-delay: 1s;
+}
+
+.img-hide:nth-child(2) { transition-delay: 0s }
+.img-hide:nth-child(3) { transition-delay: .5s }
+
+.img-show:nth-child(2) { transition-delay: .5s }
+.img-show:nth-child(3) { transition-delay: 1s }
+
+/* .img-container.img-hide {
+
+} */
 
 .img-overlay {
   /* position: absolute;
@@ -313,6 +341,10 @@ body, html {
 
 .metamorphosis {
   background: url(../assets/img/metamorphosis.jpg);
+}
+
+.candide {
+  background: url(../assets/img/voltaire.jpg);
 }
 
 .brave-new-world {
@@ -448,6 +480,7 @@ body, html {
 
 
 .list-title {
+  height:300px;
   cursor: pointer;
   transition: 1s;
   z-index: 3;
