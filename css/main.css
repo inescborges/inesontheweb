@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: MuliBold;
+    src: url(../assets/fonts/muli/Muli-Bold.ttf);
+}
+
+@font-face {
     font-family: MuliExtraBold;
     src: url(../assets/fonts/muli/Muli-ExtraBold.ttf);
 }
@@ -26,14 +31,6 @@ body, html {
     backface-visibility: hidden;
 }
 
-.intro-container {
-  height: 100vh;
-}
-
-.name-part-one {
-    padding: 22px 0 0 20px;
-}
-
 .title-bold {
     font-family: MuliExtraBold;
     color: white;
@@ -42,12 +39,72 @@ body, html {
 .intro-content {
     position: relative;
     height: 100%;
-    padding-top: 5px;
     color: #FFFFFF;
 }
 
-.cont {
-  width: 100%;
+.intro-content .cont:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    max-width: calc(70% - 30px);
+    height: 100%;
+    background: url('../assets/img/noise.png');
+    animation-name: noise;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    -webkit-transition: 1.5s;
+    -ms-transition: 1.5s;
+    transition: 1.5s;
+ }
+
+ @keyframes noise {
+    0%, 100% {
+        background-position: 0 0;
+    }
+
+    10% {
+        background-position: -5% -10%;
+    }
+
+    20% {
+        background-position: -15% 5%;
+    }
+
+    30% {
+        background-position: 7% -25%;
+    }
+
+    40% {
+        background-position: 20% 25%;
+    }
+
+    50% {
+        background-position: -25% 10%;
+    }
+
+    60% {
+        background-position: 15% 5%;
+    }
+
+    70% {
+        background-position: 0% 15%;
+    }
+
+    80% {
+        background-position: 25% 35%;
+    }
+
+    90% {
+        background-position: -10% 10%;
+    }
+}
+
+ .intro-content .cont.animation:before {
+   width: 100%;
+ }
+
+.name-part-one {
+    padding: 22px 0 0 20px;
 }
 
 .name-part-one .dot {
@@ -57,7 +114,7 @@ body, html {
     background-color: #000;
     margin-bottom: 6px;
     opacity: 0;
-    animation: dot-anim .7s 2s linear forwards;
+    animation: regular-fadein .7s 2s linear forwards;
 }
 
 .name-part-one .rect{
@@ -69,13 +126,17 @@ body, html {
     margin-bottom: 10px;
 }
 
-@keyframes dot-anim {
+@keyframes regular-fadein {
   from {
     opacity: 0;
-}
-to{
+  }
+  to{
     opacity: 1;
+  }
 }
+
+.name-part-two {
+    padding-top: 5px;
 }
 
 .name-part-one h2 {
@@ -93,11 +154,13 @@ to{
   0% {
     opacity: 0.25;
     -webkit-transform: translate(0, 200%);
+    -ms-transform: translate(0, 200%);
     transform: translate(0, 200%);
 }
 100% {
     opacity: 1;
     -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
     transform: translate(0, 0);
 }
 }
@@ -106,18 +169,21 @@ to{
   0% {
     opacity: 0.25;
     -webkit-transform: translate(0, -200%);
+    -ms-transform: translate(0, -200%);
     transform: translate(0, -200%);
-}
-100% {
+ }
+  100% {
     opacity: 1;
     -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
     transform: translate(0, 0);
-}
+  }
 }
 
 .name-part-two {
     position: relative;
 }
+
 .name-part-two h2 {
     margin-top: 10px;
     writing-mode: vertical-rl;
@@ -127,7 +193,7 @@ to{
     animation: name-fadein-up .7s 1s linear forwards;
 }
 
-.intro {
+.intro, .quote-section {
     display: flex;
     margin: 0;
     position: relative;
@@ -142,13 +208,16 @@ to{
 
 }
 
-.description p {
-    font-family: MuliRegular;
+.description p, .quote p {
     font-size: 15px;
     line-height: 1.5;
     margin-top: 5%;
-    opacity: .7;
     white-space: pre-line;
+}
+
+.description p {
+    font-family: MuliRegular;
+    opacity: .7;
     animation: desc-fadein .7s 2s linear;
     animation-fill-mode: both;
 }
@@ -158,104 +227,71 @@ to{
   to {opacity:.7;}
 }
 
-.description p span {
-  display: block;
-}
+.my-image {
+    position: relative;
+    height: 100%;
+    max-height: 350px;
+    padding: 0;
+    background: url(../assets/img/ines.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: image-fadein .7s 1s both;
+  }
+  
+  @keyframes image-fadein {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(0, 200%);
+        -ms-transform: translate(0, 200%);
+        transform: translate(0, 200%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+  }
 
 /*FAVORITES CONTENT*/
 
-.favorites-content, .test-content {
+.favorites-content, .quote-content{
     position: relative;
-    padding-top: 80px;
     background-color: white;
+    opacity: 0;
+    animation: regular-fadein 1s 1s linear forwards;
 }
 
-/*test CONTENT*/
-
-.test-content {
-    position: relative;
+.favorites-content {
     padding-top: 80px;
-    background-color: white;
 }
 
-.inner {
-    padding: 50% 0;
-    height: 0;
-}
-
-.menu-list {
-    display: block;
-    /* transform-origin: top left; */
-    /* Note: for a CLOCKWISE rotation, use the commented-out
-       transform instead of this one. */
-    /* transform: rotate(-90deg) translate(-100%); */
-    /* transform: rotate(90deg) translate(0, -100%); */
-
-    /* Not vital, but possibly a good idea if the element you're rotating contains
-       text and you want a single long vertical line of text and the pre-rotation
-       width of your element is small enough that the text wraps: */
-    white-space: nowrap;
-}
-
-
-/*.my-img {
-    z-index:999999;
-}*/
-
-
-.my-image {
-  position: relative;
-  height: 100%;
-  max-height: 350px;
-  padding: 0;
-  background: url(../assets/img/ines.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  animation: image-fadein .7s 1s both;
-}
-
-@keyframes image-fadein {
-  0% {
-      opacity: 0;
-      -webkit-transform: translate(0, 200%);
-      transform: translate(0, 200%);
-  }
-  100% {
-      opacity: 1;
-      -webkit-transform: translate(0, 0);
-      transform: translate(0, 0);
-  }
-}
-
-/* .favorites-content {
-  letter-spacing: .1em;
-} */
-
-.favorites-content h2 {
-  padding: 12px;
-  padding-left: 44px;
-  background: #000;
-  color: #ffffff;
-  margin-bottom: 2%;
+.favorites-content h2, .quote-content h2 {
+    padding: 12px;
+    padding-left: 44px;
+    background: #000;
+    color: #ffffff;
+    margin-bottom: 0;
 }
 
 .list {
-  height: 100%;
-  width: 100%;
-  max-height: 190px;
-  display: flex;
-  align-items: center;
-  transition: 1s;
+    height: 100%;
+    width: 100%;
+    max-height: 190px;
+    display: flex;
+    align-items: center;
+    transition: 1s;
 }
 
 .list-show {
-  max-height: 300px;
   transition: 1s;
+  max-height: 300px;
 }
 
 .img-container {
   display: flex;
   flex-direction: column;
+  opacity: 0;
   margin: 0 2%;
   opacity: 0;
 }
@@ -269,10 +305,6 @@ to{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-
-.img-container:hover .title-overlay {
-  opacity: .85;
 }
 
 .img-show {
@@ -295,26 +327,6 @@ to{
 .img-show:nth-child(3) { transition-delay: 1s }
 .img-show:nth-child(4) { transition-delay: 1.5s }
 
-/* .img-container.img-hide {
-
-} */
-
-.img-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  opacity: 0;
-  transition: .3s ease;
-  background: #000;
-  color: #ffffff;
-  font-weight: bold;
-}
-
 .title-overlay {
   color: white;
   background-color: black;
@@ -328,6 +340,10 @@ to{
   transform: translate(-50%, -50%);
   text-align: center;
   transition: .3s ease;
+}
+
+.img-container:hover .title-overlay {
+    opacity: .85;
 }
 
 .selected-ambient-works {
@@ -378,111 +394,6 @@ to{
   background: url(../assets/img/brave-new-world.jpg);
 }
 
-.intro-content .cont:before {
-     content: "";
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 0;
-     max-width: calc(70% - 30px);
-     height: 100%;
-    background: url('../assets/img/noise.png');
-    animation-name: noise;
-    animation-iteration-count: infinite;
-    animation-duration: 1s;
-    pointer-events: none;
-    -webkit-transition: 1.5s; /* For Safari 3.1 to 6.0 */
-    transition: 1.5s;
- }
-
- .intro-content .cont.animation:before {
-   width: 100%;
- }
-
-@keyframes noise {
-    0%, 100% {
-        background-position: 0 0;
-    }
-
-    10% {
-        background-position: -5% -10%;
-    }
-
-    20% {
-        background-position: -15% 5%;
-    }
-
-    30% {
-        background-position: 7% -25%;
-    }
-
-    40% {
-        background-position: 20% 25%;
-    }
-
-    50% {
-        background-position: -25% 10%;
-    }
-
-    60% {
-        background-position: 15% 5%;
-    }
-
-    70% {
-        background-position: 0% 15%;
-    }
-
-    80% {
-        background-position: 25% 35%;
-    }
-
-    90% {
-        background-position: -10% 10%;
-    }
-}
-
-
-.main-title {
-    padding: .3em 1em .25em;
-    font-weight: 400;
-    font-size: 3vw;
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: .15em;
-    color: #4c2298;
-
-    background: #794fc5;
-}
-
-.link {
-    display: inline-block;
-    padding: 1em 1em;
-
-    color: #4c2298;
-    line-height: 1;
-    background: #794fc5;
-    text-decoration: none;
-    transition: color .3s ease, background .3s ease;
-}
-
-.link:hover, .link:focus {
-    background: #4c2298;
-    color: #794fc5;
-}
-
-/* test */
-
-* {
-    list-style-type: none;
-}
-
-.menu {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    height: 250px;
-}
-
 .menu-title {
     display: block;
     height: 100%;
@@ -500,7 +411,6 @@ to{
 }
 
 .menu-title-hide {
-  writing-mode: vertical-rl;
   text-orientation: inherit;
   letter-spacing: .8em;
 }
@@ -514,95 +424,26 @@ to{
 }
 
 .list-title-hide {
+  -webkit-transform: rotate(-90deg) translate(40%,35%);
+  -ms-transform: rotate(-90deg) translate(40%,35%);
   transform: rotate(-90deg) translate(40%,35%);
   z-index: 3;
   transition: 1s;
 }
 
-/* .menu-title:hover { background: #fff; color: #000; transition: 0.2s ease-in-out all; } */
-
-.flex-row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  height:100%
+.quote {
+    padding-left: 44px;
 }
 
-.flex-row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
+.quote p, h4 {
+    font-family: MuliBold;
 }
 
-.flex-row .fav-pic {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-/*
-.menu-dropdown {
-    position: absolute;
-    padding: 0;
-    background: white;
+.quote p {
+    font-style: italic;
 }
 
-.menu .menu-dropdown div {
-    visibility: hidden;
-    height: 220px;
-    opacity: 0;
-    margin: 10px;
-    width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    color: rgba(25,25,25,0);
-    transition:
-            0.8s width ease-in-out,
-            0.8s opacity,
-            0.5s padding,
-            0.5s margin,
-            0.3s color,
-            0.8s visibility;
-    z-index: 99;
+.quote h4 {
+    font-family: MuliExtraBold;
+    margin-top: 2%;
 }
-
-.menu .menu-dropdown div.open {
-    height: 220px;
-    width: 227px;
-    margin: 10px;
-    opacity: 1;
-    background: rgba(0,0,0,0);
-    visibility: visible;
-    white-space: nowrap;
-    transition:
-            0.8s width ease-in-out,
-            0.8s opacity,
-            0.5s padding cubic-bezier(.73,.32,.34,1.5),
-            0.5s margin cubic-bezier(.73,.32,.34,1.5),
-            0.5s 0.2s color,
-            0.2s background-color;
-}
-
-.menu-dropdown > *:hover {
-    background: rgba(0,0,0,0.1);
-}
-
-.menu:not(:hover) .menu-dropdown > * {
-    visibility: hidden;
-    width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin: 0;
-    color: rgba(25,25,25,0);
-    transition:
-            0.8s 0.5s width ease-in-out,
-            0.5s 0.2s padding,
-            0.5s 0.2s margin,
-            0.3s 0.2s color,
-            0.8s 0.5s visibility;
-    z-index: 99;
-}
-
-.hList > * + * {
-    margin-left: 0;
-} */
